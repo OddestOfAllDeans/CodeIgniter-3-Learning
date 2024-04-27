@@ -73,8 +73,8 @@
                         <h6 class="collapse-header">Datas:</h6>
                         <a class="collapse-item" href="<?= base_url('Students') ?>">Students</a>
                         <a class="collapse-item" href="<?= base_url('Mentors') ?>">Mentors</a>
-                        <a class="collapse-item" href="cards.html">Faculties</a>
-                        <a class="collapse-item" href="buttons.html">Books</a>
+                        <a class="collapse-item" href="<?= base_url('Faculties') ?>">Faculties</a>
+                        <a class="collapse-item" href="<?= base_url('Books') ?>">Books</a>
                         <a class="collapse-item" href="<?= base_url("Subjects") ?>">Subjects</a>
                     </div>
                 </div>
@@ -96,13 +96,6 @@
                 <a class="nav-link" href="<?= base_url('User') ?> ">
                     <i class="fas fa-fw fa-user"></i>
                     <span>User Page</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
             </li>
 
             <!-- Divider -->

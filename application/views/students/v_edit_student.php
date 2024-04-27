@@ -50,6 +50,7 @@ echo validation_errors('<div class="col-lg-12 mb-4">
 <div class="form-group">
 <label>Faculties</label>
 <select name="faculty_id" id="faculty_id" class="form-control" placeholder="choose gender (NO LGBTQ+ OPTIONS, FUCK THE LGBTQ+ COMMUNITY THEY CAN GO DIE!)">
+<option value="">--Select Faculty--</option>
 <?php foreach ($faculties as $key => $value) { ?>    
 <option value="<?= $value->faculty_id ?>"><?= $value->faculty_name ?></option>
 <?php } ?>
@@ -59,6 +60,7 @@ echo validation_errors('<div class="col-lg-12 mb-4">
 <div class="form-group">
 <label>Study Program</label>
 <select name="prodi_id" id="prodi_id" class="form-control" placeholder="choose gender (NO LGBTQ+ OPTIONS, FUCK THE LGBTQ+ COMMUNITY THEY CAN GO DIE!)">
+<option value="">--Select Study Program--</option>
 <?php foreach($prodi as $key => $value) { ?>
 <option value="<?= $value->prodi_id ?>"><?= $value->prodi ?></option>
 <?php } ?>
