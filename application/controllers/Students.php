@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('Fuck you');
 class Students extends CI_Controller {
-
+    
     public function __construct()
     {
         parent::__construct();
@@ -145,6 +145,8 @@ class Students extends CI_Controller {
         );
     
     }
+    
 }
+
 
 ?>

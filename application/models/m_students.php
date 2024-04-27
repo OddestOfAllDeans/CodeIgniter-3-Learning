@@ -38,4 +38,5 @@ class m_students extends CI_Model {
 			$this->db->join('prodi', 'prodi.prodi_id = students.prodi_id',  'left');
 			return $this->db->get('students');
 		}
+
 	}

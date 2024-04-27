@@ -1,0 +1,10 @@
+.faculty-color {
+    color: darkorchid;
+}
+.button-faculty-color {
+    background-color: darkorchid;
+}
+.border-left-orchid {
+    border-left-color: darkorchid;
+    border-left-width: 0.3rem;
+}
