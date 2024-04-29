@@ -79,6 +79,29 @@ $mentorManager = new MentorManager($db);
 $totalMentors = $mentorManager->countMentors();
 ?>
 
+<!-- Faculty Count -->
+<?php class FacultyManager {
+    private $db;
+
+    public function __construct($db) {
+        $this->db = $db;
+    }
+
+    public function countFaculty() {
+        $query = "SELECT COUNT(*) AS total_faculties FROM faculties";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result['total_faculties'];
+    }
+}
+
+// Usage
+$db = new PDO('mysql:host=localhost;dbname=ignitethree', 'root', '');
+$facultyManager = new FacultyManager($db);
+$totalfaculties = $facultyManager->countFaculty();
+?>
+
 <?php echo form_open('Students/count_students') ?>
 <div class="row">
 <div class="col-xl-3 col-md-6 mb-4">
@@ -139,7 +162,7 @@ $totalMentors = $mentorManager->countMentors();
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold faculty-color text-uppercase mb-1">
                                                 Faculties</div>
-                                                <div class="h5 mb-0 font-weight-bold text-dark">10</div><br>
+                                                <div class="h5 mb-0 font-weight-bold text-dark"><?= $totalfaculties ?></div><br>
                                                 <a href="<?php echo base_url("Faculties"); ?>" class="text-white btn button-faculty-color">View faculties</a>
                                         </div>
                                         <div class="col-auto">
