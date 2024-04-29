@@ -74,7 +74,7 @@
                         <a class="collapse-item" href="<?= base_url('Students') ?>">Students</a>
                         <a class="collapse-item" href="<?= base_url('Mentors') ?>">Mentors</a>
                         <a class="collapse-item" href="<?= base_url('Faculties') ?>">Faculties</a>
-                        <a class="collapse-item" href="<?= base_url('Books') ?>">Books</a>
+                        <a class="collapse-item" href="<?= base_url('Prodi') ?>">Study Program</a>
                         <a class="collapse-item" href="<?= base_url("Subjects") ?>">Subjects</a>
                     </div>
                 </div>

@@ -4,7 +4,24 @@
 .button-faculty-color {
     background-color: darkorchid;
 }
+.button-facultext {
+    background-color: aqua;
+    font-size: x-small;
+}
 .border-left-orchid {
     border-left-color: darkorchid;
+    border-left-width: 0.3rem;
+}
+.prodi-color {
+    color: aqua;
+}
+.button-prodi-color {
+    background-color: aqua;
+}
+.button-prodi {
+    background-color: aqua;
+}
+.border-left-aqua {
+    border-left-color: aqua;
     border-left-width: 0.3rem;
 }

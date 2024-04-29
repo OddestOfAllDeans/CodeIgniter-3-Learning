@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= base_url('sb-admin/css/style.css') ?>">
     <title>Document</title>
+    <style>.hover-here:hover {
+            background-color: chocolate !important; 
+        }
+        .hover-there:hover {
+            background-color: blueviolet !important;
+        }
+</style>
 </head>
 <body>
     
@@ -102,6 +109,29 @@ $facultyManager = new FacultyManager($db);
 $totalfaculties = $facultyManager->countFaculty();
 ?>
 
+<!-- Prodi Count -->
+<?php class ProdiManager {
+    private $db;
+
+    public function __construct($db) {
+        $this->db = $db;
+    }
+
+    public function countProdi() {
+        $query = "SELECT COUNT(*) AS total_prodi FROM prodi";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result['total_prodi'];
+    }
+}
+
+// Usage
+$db = new PDO('mysql:host=localhost;dbname=ignitethree', 'root', '');
+$prodiManager = new ProdiManager($db);
+$totalprodi = $prodiManager->countProdi();
+?>
+
 <?php echo form_open('Students/count_students') ?>
 <div class="row">
 <div class="col-xl-3 col-md-6 mb-4">
@@ -163,10 +193,29 @@ $totalfaculties = $facultyManager->countFaculty();
                                             <div class="text-xs font-weight-bold faculty-color text-uppercase mb-1">
                                                 Faculties</div>
                                                 <div class="h5 mb-0 font-weight-bold text-dark"><?= $totalfaculties ?></div><br>
-                                                <a href="<?php echo base_url("Faculties"); ?>" class="text-white btn button-faculty-color">View faculties</a>
+                                                <a href="<?php echo base_url("Faculties"); ?>" class="text-white hover-there btn button-faculty-color">View faculties</a>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-school fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<div class="col-xl-3 col-md-6 mb-4" style="">
+                            <div class="card shadow h-100 py-2" style="border-left-color: coral;
+    border-left-width: 0.3rem; ">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div style="color: coral;" class="prodi-color text-xs font-weight-bold text-uppercase mb-1">
+                                                Study Program</div>
+                                                <div class="h5 mb-0 font-weight-bold text-dark"><?= $totalprodi ?></div><br>
+                                                <a href="<?php echo base_url("Prodi"); ?>" style="background-color: coral;
+                                                    font-size: 13.5px;" class="hover-here text-white btn">View study program</a>
+                                        </div>
+                                        <div class="col-auto">
+                                        <i class="fa fa-2x fa-book text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
