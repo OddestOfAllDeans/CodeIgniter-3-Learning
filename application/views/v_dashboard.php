@@ -9,7 +9,10 @@
             background-color: chocolate !important; 
         }
         .hover-there:hover {
-            background-color: blueviolet !important;
+            background-color: slateblue !important;
+        }
+        .row {
+            
         }
 </style>
 </head>

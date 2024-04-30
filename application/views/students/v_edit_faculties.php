@@ -1,9 +1,9 @@
 <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Editing student data</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Editing faculty data</h6>
                                 </div>
                                 <div class="card-body">
-                                    <p class="mb-0">If you're a teacher and are wondering how to edit student data, do not worry, it's pretty simple, all you need to do is fill all of the forms below with the student's details and after you are done doing that, just click the "Edit student data" and it's done!</p>
+                                    <p class="mb-0">If you're a teacher and are wondering how to edit a faculty data, do not worry, it's pretty simple, all you need to do is fill all of the forms below with the change you want and after you are done doing that, just click the "Edit faculty" and it's done!</p>
                                 </div>
                             </div>
 <?php 

@@ -48,7 +48,7 @@ class Prodi extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $data = array(
-                'title' => 'Edit subject',
+                'title' => 'Edit study program',
                 'prodi' => $this->m_prodi->detail_data($prodi_id),
                 'page' => 'students/v_edit_prodi'
             );
