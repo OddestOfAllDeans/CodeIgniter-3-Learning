@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('Fuck you');
 class Students extends CI_Controller {
-
+    
     public function __construct()
     {
         parent::__construct();
@@ -136,6 +136,17 @@ class Students extends CI_Controller {
         $this->session->set_flashdata('message', "Student's data has sucessfully been deleted");
         redirect('students/index');
     }
+    public function print() {
+        $data['students'] = $this->m_students->show_data('students')->result();
+        $this->load->view('students/v_print_student', $data, FALSE);
+        $data = array(
+        'faculties' => $this->m_faculties->all_data(),
+        'prodi' => $this->m_prodi->all_data(),
+        );
+    
+    }
+    
 }
+
 
 ?>

@@ -1,4 +1,5 @@
 <a href="<?= base_url('Students/input_student') ?>" class="btn btn-success">Add Student</a>
+<button onclick="window.open('<?=  base_url('Students/print') ?>', '_blank')" class="btn btn-dark">Print</button>
 <?php
 if ($this->session->flashdata('message')) {
     echo "<br>";
@@ -35,9 +36,9 @@ if ($this->session->flashdata('message')) {
                 <td><?= $value->faculty_name ?></td>
                 <td><?= $value->prodi ?></td>
                 <td>
-                    <a href="<?=  base_url('Students/edit_students/'.$value->id) ?>" class='btn btn-warning btn-sm'>Edit</a>
-            <a href="<?=  base_url('Students/delete_student/'.$value->id) ?>" onclick="return confirm('Are you sure you want to delete this row?')" class='btn btn-sm btn-danger'>Delete</a>
-                </td>
+            <a href="<?=  base_url('Students/edit_students/'.$value->id) ?>" class='btn btn-warning'>Edit</a><br><br>
+            <a href="<?=  base_url('Students/delete_student/'.$value->id) ?>" onclick="return confirm('Are you sure you want to delete this row?')" class='btn btn-danger'>Delete</a>
+        </td>
             </tr>
         <?php } ?>    
     </tbody>
