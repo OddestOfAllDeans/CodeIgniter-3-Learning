@@ -38,5 +38,11 @@ class m_students extends CI_Model {
 			$this->db->join('prodi', 'prodi.prodi_id = students.prodi_id',  'left');
 			return $this->db->get('students');
 		}
+		public function get_student($id) {
+			$this->db->join('faculties', 'faculties.faculty_id = students.faculty_id',  'left');
+			$this->db->join('prodi', 'prodi.prodi_id = students.prodi_id',  'left');
+			$query = $this->db->get_where('students', array('id' => $id));
+			return $query->row_array();
+		}
 
 	}

@@ -44,7 +44,8 @@ for ($i = 0; $i < 1; $i++) {
                 <td><?= $value->prodi ?></td>
                 <td>
             <a href="<?=  base_url('Students/edit_students/'.$value->id) ?>" class='btn btn-warning'>Edit</a><br><br>
-            <a href="<?=  base_url('Students/delete_student/'.$value->id) ?>" onclick="return confirm('Are you sure you want to delete this row?')" class='btn btn-danger'>Delete</a>
+            <a href="<?=  base_url('Students/delete_student/'.$value->id) ?>" onclick="return confirm('Are you sure you want to delete this row?')" class='btn btn-danger'>Delete</a><br><br>
+            <button onclick="window.open('<?=  base_url('Students/view/'.$value->id) ?>', '_blank')" class="btn btn-dark">Print</button>
         </td>
             </tr>
         <?php } ?>    

@@ -8,11 +8,13 @@ if ($this->session->flashdata('message')) {
     echo "</div>";
 }
 ?>
+<?php for ($i = 1; $i < 1; $i++) ?>
 <br>
 <br>
 <table class="table table-bordered" id="dataTable"> 
     <thead>
         <tr>
+            <th style="text-align: center;">No</th>
             <th>Subjects</th>
             <th>Time</th>
             <th>Edit</th>
@@ -22,6 +24,7 @@ if ($this->session->flashdata('message')) {
     <tbody>
         <?php foreach ($sbjcts as $key => $value) { ?>
             <tr>
+                <td style="text-align: center;"><?= $i++ ?></td>
                 <td><?= $value->subjects ?></td>
                 <td><?= $value->time ?></td>
                 <td><a href="<?= base_url('Subjects/edit_subject/' . $value->id) ?>" class="btn btn-primary">Edit</a>

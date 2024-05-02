@@ -145,6 +145,16 @@ class Students extends CI_Controller {
         );
     
     }
+    public function view($id) {
+        $data['student'] = $this->m_students->get_student($id);
+        if ($data['student']) {
+            $this->load->view('students/student_details', $data);
+        } else {
+            // Handle case where student is not found
+            echo "Student not found";
+        }
+    }
+
     
     
 }
