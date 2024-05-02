@@ -14,7 +14,7 @@ if ($this->session->flashdata('message')) {
 <table class="table table-bordered" id="dataTable">
     <thead>
         <tr>
-            <th>ID</th>
+            <th style="text-align: center;">ID</th>
             <th>Name</th>
             <th>Actions</th>
         </tr>
@@ -22,7 +22,7 @@ if ($this->session->flashdata('message')) {
     <tbody>
         <?php foreach ($fclts as $key => $value) { ?>
             <tr>
-                <td><?= $value->faculty_id ?></td>
+                <td style="text-align: center;"><?= $value->faculty_id ?></td>
                 <td><?= $value->faculty_name ?></td>
                 <td>
             <a href="<?=  base_url('Faculties/edit_faculty/'.$value->faculty_id) ?>" class='btn btn-warning'>Edit</a>

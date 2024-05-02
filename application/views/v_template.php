@@ -36,12 +36,12 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('application/views/v_dashboard') ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fa fa-cubes"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Cranaphant</div>
-            </a>
+            </div>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">

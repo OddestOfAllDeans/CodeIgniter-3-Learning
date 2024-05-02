@@ -6,6 +6,13 @@
                 <p class="mb-0">If you're a teacher and are wondering how to insert a new study program, do not worry, it's pretty simple, all you need to do is fill the form below with a new study program and after you are done doing that, just click the "Input new study program" and it's done!</p>
             </div>
         </div>
+        <?php 
+echo validation_errors('<div class="col-lg-12 mb-4">
+<div class="card bg-danger text-white shadow">
+    <div class="card-body">', '</div>
+    </div>
+</div>');
+?>
 <?php echo form_open('Prodi/input_prodi') ?>
 
 <div class="form-group">

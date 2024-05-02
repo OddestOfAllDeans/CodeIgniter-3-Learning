@@ -26,8 +26,8 @@ if ($this->session->flashdata('message')) {
                 <td><?= $value->time ?></td>
                 <td><a href="<?= base_url('Subjects/edit_subject/' . $value->id) ?>" class="btn btn-primary">Edit</a>
                 <a href="<?= base_url('Subjects/delete_subjects/' . $value->id) ?>" onclick="return confirm('Are you sure you want to delete this row?')" class="btn btn-danger">Delete</a></td>
-                <td><a href="" class="btn btn-success">Attend</a>
-                <a href="" class="btn btn-warning">Absent</a></td>
+                <td><a href="<?= base_url("Subjects/attendance") ?>" class="btn btn-success">Attend</a>
+                <a href="<?= base_url("Subjects/absent") ?>" class="btn btn-warning">Absent</a></td>
             </tr>
         <?php } ?>
     </tbody>

@@ -10,12 +10,18 @@ if ($this->session->flashdata('message')) {
 }
 
 ?>
+<?php
+for ($i = 0; $i < 1; $i++) {
+
+    }
+?>
 <br>
 <br>
 <table class="table table-bordered" id="dataTable">
     <thead>
         <tr>
-            <th>NIM</th>
+            <td>No</td>
+            <th style="text-align: center;">ID</th>
             <th>Name</th>
             <th>Birthplace</th>
             <th>Birthdate</th>
@@ -28,6 +34,7 @@ if ($this->session->flashdata('message')) {
     <tbody>
         <?php foreach ($stds as $key => $value) { ?>
             <tr>
+                <td style="text-align: center;"><?= $i++ ?></td>
                 <td><?= $value->nim ?></td>
                 <td><?= $value->name ?></td>
                 <td><?= $value->birth_place ?></td>
