@@ -21,8 +21,6 @@ class m_students extends CI_Model {
 		$this->db->from('students');
 		$this->db->where('id', $id);
 		return $this->db->get()->row();
-		$this->db->join('faculties', 'faculties.faculty_id = students.faculty_id',  'left');
-		$this->db->join('prodi', 'prodi.prodi_id = students.prodi_id',  'left');
 		}
 		public function update_data($data) {
 			$this->db->where('id', $data['id']);
@@ -43,6 +41,9 @@ class m_students extends CI_Model {
 			$this->db->join('prodi', 'prodi.prodi_id = students.prodi_id',  'left');
 			$query = $this->db->get_where('students', array('id' => $id));
 			return $query->row_array();
+		}
+		public function detail_data2($id){
+			return $this->db->query('select * from students s  left join faculties f on (s.faculty_id = f.faculty_id) left join prodi p on (s.prodi_id = p.prodi_id)')->row_array();
 		}
 
 	}
