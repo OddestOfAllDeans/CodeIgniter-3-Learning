@@ -1,3 +1,12 @@
+<?php 
+if ($this->session->flashdata('error')) {
+    echo "<br>";
+    echo "<br>";
+    echo '<div class="alert alert-danger">';
+    echo $this->session->flashdata('error');
+    echo "</div>";
+}
+?>
 <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Editing study program</h6>

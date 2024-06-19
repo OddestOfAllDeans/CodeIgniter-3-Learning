@@ -22,8 +22,10 @@ class Students extends CI_Controller {
     
     public function input_student()
     {
-        $this->form_validation->set_rules('nim', 'NIM', 'required', [
-            'required' => '%s Must be filled first to be able to input new student data!'
+        $this->form_validation->set_rules('nim', 'NIM', 'required|min_length[5]|max_length[5]', [
+            'required' => '%s must be filled first to be able to input new student data!',
+            'min_length' => '%s must be exactly 5 digits!',
+            'max_length' => '%s must be exactly 5 digits!'
         ]);
 
         $this->form_validation->set_rules('name', 'Name', 'required', [
@@ -38,7 +40,7 @@ class Students extends CI_Controller {
             'required' => '%s Must be filled first to be able to input new student data!'
         ]);
 
-        $this->form_validation->set_rules('nim', 'Gender', 'required', [
+        $this->form_validation->set_rules('gender', 'Gender', 'required', [
             'required' => '%s Must be filled first to be able to input new student data!'
         ]);
 
@@ -61,9 +63,14 @@ class Students extends CI_Controller {
             );
             $this->load->view('v_template', $data, false);   
         } else {
+            $name = $this->input->post('name');
+            if ($this->m_students->student_exists($name)) {
+                $this->session->set_flashdata('error', 'This student already exists');
+                redirect('Students/input_student');
+        } else {
             $data = array(
                 'nim' => $this->input->post('nim'),
-                'name' => $this->input->post('name'),
+                'name' => $name,
                 'birth_place' => $this->input->post('birth_place'),
                 'birth_date' => $this->input->post('birth_date'),
                 'gender' => $this->input->post('gender'),
@@ -74,13 +81,16 @@ class Students extends CI_Controller {
             $this->session->set_flashdata('message', 'New student data has been inserted into the database!');
             redirect('students/index');
         }
+    }
         
     }
     public function edit_students($id) {
-        $this->form_validation->set_rules('nim', 'NIM', 'required', [
-            'required' => '%s Must be filled first to be able to input new student data!'
+        $this->form_validation->set_rules('nim', 'NIM', 'required|min_length[5]|max_length[5]', [
+            'required' => '%s Must be filled first to be able to input new student data!',
+            'min_length' => '%s Must only have 5 digits!',
+            'max_length' => '%s Must only have 5 digits!'
         ]);
-        
+
         $this->form_validation->set_rules('name', 'Name', 'required', [
             'required' => '%s must be filled to be able to edit student data'
         ]);
@@ -115,10 +125,15 @@ class Students extends CI_Controller {
         );
         $this->load->view('v_template', $data, false);
     } else {
+        $name = $this->input->post('name');
+        if ($this->m_students->student_exists($name, $id)) {
+            $this->session->set_flashdata('error', 'This student already exists');
+            redirect('Students/edit_students/' . $id);
+    } else {
         $data = array(
             'id' => $id,
             'nim' => $this->input->post('nim'),
-            'name' => $this->input->post('name'),
+            'name' => $name,
             'birth_place' => $this->input->post('birth_place'),
             'birth_date' => $this->input->post('birth_date'),
             'gender' => $this->input->post('gender'),
@@ -129,7 +144,8 @@ class Students extends CI_Controller {
         $this->session->set_flashdata('message', "The student's data has been updated");
         redirect ('students/index');
     }
-    }
+  }
+}
     public function delete_student($id){
         $data = array('id' => $id);
         $this->m_students->delete_data($data);

@@ -1,3 +1,12 @@
+<?php 
+if ($this->session->flashdata('error')) {
+    echo "<br>";
+    echo "<br>";
+    echo '<div class="alert alert-danger">';
+    echo $this->session->flashdata('error');
+    echo "</div>";
+}
+?>
 <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Editing mentor's data</h6>
@@ -25,9 +34,17 @@ echo validation_errors('<div class="col-lg-12 mb-4">
 </div>
 
 <div class="form-group">
-<label>Subjects</label>
-<input name="subject" class="form-control" value="<?= $mntrs->subject ?>" type="text" placeholder="Insert subject">
+<label>Subject</label>
+<select name="subject_id" id="subject_id" class="form-control" placeholder="choose gender (NO LGBTQ+ OPTIONS, FUCK THE LGBTQ+ COMMUNITY THEY CAN GO DIE!)">
+    <option value="">--Select Subject--</option>
+    <?php foreach ($subjects as $Key => $value) { ?>
+        <option value="<?= $value->subject_id ?>" <?= ($value->subject_id == $mntrs->subject_id) ? 'selected' : '' ?>>
+        <?= $value->subjects ?>
+        </option>
+     <?php } ?>   
+</select>
 </div>
+
 
 <div class="row">
 <div class="col-sm-6">

@@ -13,20 +13,14 @@ class PdfController extends CI_Controller {
 
         ob_start();
         $students = $this->m_students->detail_data2($students_id);
-        // $prodi = $this->m_prodi->detail_data($students_id);
-        // $faculties = $this->m_faculties->detail_data($students_id);
 
         if (!$students) {
-            show_404(); // Or handle the error as needed
+            show_404();
             return;
         }
 
-        // Load FPDF library
         $this->load->library('fpdf');
-        $this->fpdf->AddPage();
-        
-        // Output student details
-        
+        $this->fpdf->AddPage();                
         
         $this->fpdf->SetFont('Arial', 'B', 16);
         $this->fpdf->Cell(0, 10, 'Student Details', 0, 1, 'C');
@@ -55,7 +49,6 @@ class PdfController extends CI_Controller {
         $this->fpdf->Cell(50, 10, 'Faculty:', 0, 0);
         $this->fpdf->Cell(0, 10, $students['faculty_name'], 0, 1);
 
-        // Output PDF as a download
         $this->fpdf->Output('D', 'student_details.pdf');
 
         ob_end_flush();

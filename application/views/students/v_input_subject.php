@@ -1,3 +1,12 @@
+<?php 
+if ($this->session->flashdata('error')) {
+    echo "<br>";
+    echo "<br>";
+    echo '<div class="alert alert-danger">';
+    echo $this->session->flashdata('error');
+    echo "</div>";
+}
+?>
 <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Inserting new class subject</h6>
@@ -20,10 +29,27 @@ echo validation_errors('<div class="col-lg-12 mb-4">
     <input type="text" class="form-control" name="subjects" placeholder="Insert new subject">
 </div>
 
-<div class="form-group">
+<div class="row">
+    <div class="col-sm-6">
+    <div class="form-group">
     <label for="">Time</label>
     <input type="time" class="form-control" name="time" placeholder="Insert time for class subject">
 </div>
+</div>
+
+<div class="col-sm-6">
+    <div class="form-group">
+    <label>Day</label>
+    <select name="day" id="day" class="form-control" placeholder="choose gender (NO LGBTQ+ OPTIONS, FUCK THE LGBTQ+ COMMUNITY THEY CAN GO DIE!)">
+    <option>--Choose Day--</option>
+    <?php foreach ($days as $day) { ?>
+        <option value="<?= $day ?>"><?= $day ?></option>
+        <?php } ?>   
+    </select>
+</div>
+</div>
+</div>
+
 
 <button class="btn btn-primary" type="submit">Insert</button> <?php "\n" ?>
 <a href="<?= base_url('Subjects/index') ?>">Go back</a>

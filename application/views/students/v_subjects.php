@@ -17,6 +17,7 @@ if ($this->session->flashdata('message')) {
             <th style="text-align: center;">No</th>
             <th>Subjects</th>
             <th>Time</th>
+            <th>Day</th>
             <th>Edit</th>
             <th>Attendance</th>
         </tr>
@@ -27,10 +28,11 @@ if ($this->session->flashdata('message')) {
                 <td style="text-align: center;"><?= $i++ ?></td>
                 <td><?= $value->subjects ?></td>
                 <td><?= $value->time ?></td>
-                <td><a href="<?= base_url('Subjects/edit_subject/' . $value->id) ?>" class="btn btn-primary">Edit</a>
-                <a href="<?= base_url('Subjects/delete_subjects/' . $value->id) ?>" onclick="return confirm('Are you sure you want to delete this row?')" class="btn btn-danger">Delete</a></td>
-                <td><a href="<?= base_url("Subjects/attendance") ?>" class="btn btn-success">Attend</a>
-                <a href="<?= base_url("Subjects/absent") ?>" class="btn btn-warning">Absent</a></td>
+                <td><?= $value->day ?></td>
+                <td><a href="<?= base_url('Subjects/edit_subject/' . $value->subject_id) ?>" class="btn btn-primary">Edit</a>
+                <a href="<?= base_url('Subjects/delete_subjects/' . $value->subject_id) ?>" onclick="return confirm('Are you sure you want to delete this row?')" class="btn btn-danger">Delete</a></td>
+                <td><a href="<?= base_url("Subjects/attendance/" . $value->subject_id) ?>" class="btn btn-success">Attend</a>
+                <a href="<?= base_url("Subjects/absent/" . $value->subject_id) ?>" class="btn btn-warning">Absent</a></td>
             </tr>
         <?php } ?>
     </tbody>

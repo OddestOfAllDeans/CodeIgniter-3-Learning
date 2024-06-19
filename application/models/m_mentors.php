@@ -8,6 +8,7 @@ class m_mentors extends CI_Model {
     {
         $this->db->select('*');
         $this->db->from('mentors');
+        $this->db->join('subjects', 'subjects.subject_id = mentors.subject_id', 'left');
         return $this->db->get()->result();
     }
     public function insert_data($data) {
@@ -26,6 +27,13 @@ class m_mentors extends CI_Model {
     public function delete_data($data) {
         $this->db->where ('id', $data['id']);
         $this->db->delete('mentors', $data);
+    }
+    public function mentor_exists($name, $exclude_id = null) {
+        $this->db->where('name', $name);
+        if ($exclude_id) {
+            $this->db->where('id !=', $exclude_id);
+        }
+        return $this->db->get('mentors')->num_rows() > 0;
     }
 }
 

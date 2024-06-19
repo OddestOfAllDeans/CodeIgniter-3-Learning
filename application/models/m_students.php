@@ -43,7 +43,17 @@ class m_students extends CI_Model {
 			return $query->row_array();
 		}
 		public function detail_data2($id){
-			return $this->db->query('select * from students s  left join faculties f on (s.faculty_id = f.faculty_id) left join prodi p on (s.prodi_id = p.prodi_id)')->row_array();
+			return $this->db->query('select * from students s left join faculties f on (s.faculty_id = f.faculty_id) left join prodi p on (s.prodi_id = p.prodi_id)')->row_array();
 		}
-
+		public function student_exists($name, $exclude_id = null) {
+			$this->db->where('name', $name);
+			if ($exclude_id) {
+				$this->db->where('id !=', $exclude_id);
+			}
+			return $this->db->get('students')->num_rows() > 0;
+		}
+		public function get_student_by_nim($nim) {
+			$this->db->where('nim', $nim);
+			return $this->db->get('students')->row();
+		}
 	}

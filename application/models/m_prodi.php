@@ -26,5 +26,12 @@ class m_prodi extends CI_Model {
 			$this->db->where ('prodi_id', $data['prodi_id']);
 			$this->db->delete('prodi', $data);
 		}
+        public function prodi_exists($prodi, $exclude_id = null) {
+			$this->db->where('prodi', $prodi);
+			if ($exclude_id) {
+				$this->db->where('prodi_id !=', $exclude_id);
+			}
+			return $this->db->get('prodi')->num_rows() > 0;
+		}
 }
 ?>

@@ -35,7 +35,7 @@ for ($i = 0; $i < 1; $i++) {
                 <td><?= $i++ ?></td>
                 <td><?= $value->nim ?></td>
                 <td><?= $value->name ?></td>
-                <td><?= $value->subject ?></td>
+                <td><?= $value->subjects ?></td>
                 <td><?= $value->birth_date ?></td>
                 <td><?= $value->birth_place ?></td>
                 <td>

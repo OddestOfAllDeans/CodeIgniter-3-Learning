@@ -1,3 +1,12 @@
+<?php 
+if ($this->session->flashdata('error')) {
+    echo "<br>";
+    echo "<br>";
+    echo '<div class="alert alert-danger">';
+    echo $this->session->flashdata('error');
+    echo "</div>";
+}
+?>
 <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Editing class subject</h6>
@@ -13,15 +22,30 @@ echo validation_errors('<div class="col-lg-12 mb-4">
     </div>
 </div>');
 ?>
-<?php echo form_open('subjects/edit_subject/' . $sbjcts->id) ?>
+<?php echo form_open('Subjects/edit_subject/' . $sbjs->subject_id) ?>
 <div class="form-group">
     <label>Subjects</label>
-    <input name="subjects" value="<?= $sbjcts->subjects ?>" class="form-control" type="text" placeholder="Insert subject">
+    <input name="subjects" value="<?= $sbjs->subjects ?>" class="form-control" type="text" placeholder="Insert subject">
 </div>
 
-<div class="form-group">
-<label>Time</label>
-<input name="time" class="form-control" value="<?= $sbjcts->time ?>" type="time" placeholder="Insert time">
+<div class="row">
+    <div class="col-sm-6">
+    <div class="form-group">
+    <label for="">Time</label>
+    <input type="time" value="<?= $sbjs->time ?>" class="form-control" name="time" placeholder="Insert time for class subject">
+</div>
+</div>
+
+<div class="col-sm-6">
+    <div class="form-group">
+    <label>Day</label>
+    <select name="day" id="day" class="form-control">
+            <?php foreach ($days as $day) { ?>
+                <option value="<?= $day ?>" <?= ($day == $selected_day) ? 'selected' : '' ?>><?= $day ?></option>
+            <?php } ?>   
+        </select>
+</div>
+</div>
 </div>
 
 <button class="btn btn-primary" type="submit">Edit new class subject</button> <?php "\n" ?>

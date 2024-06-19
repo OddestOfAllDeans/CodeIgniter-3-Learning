@@ -31,16 +31,23 @@ class Prodi extends CI_Controller {
             );
             $this->load->view('v_template', $data, false);   
         } else {
-            $data = array(
-                'prodi_id' => $this->input->post('prodi_id'),
-                'prodi' => $this->input->post('prodi'),
-            );
-            $this->m_prodi->insert_data($data);
-            $this->session->set_flashdata('message', 'New study program has been added');
-            redirect('Prodi/index');
+            $prodi = $this->input->post('prodi');
+            if ($this->m_prodi->prodi_exists($prodi)) {
+                $this->session->set_flashdata('error', 'This study program already exists');
+                redirect('Prodi/input_prodi');
+            } else {
+                $data = array(
+                    'prodi_id' => $this->input->post('prodi_id'),
+                    'prodi' => $prodi,
+                );
+                $this->m_prodi->insert_data($data);
+                $this->session->set_flashdata('message', 'New study program has been added');
+                redirect('Prodi/index');
+            }
         }
-        
     }
+        
+    
     public function edit_prodi($prodi_id) {
         $this->form_validation->set_rules('prodi', 'Prodi', 'required', [
             'required' => '%s must be filled to complete the editing process'
@@ -54,13 +61,19 @@ class Prodi extends CI_Controller {
             );
             $this->load->view('v_template', $data, false);
         } else {
-            $data = array(
-                'prodi_id' => $prodi_id,
-                'prodi' => $this->input->post('prodi'),
-            );
-            $this->m_prodi->update_data($data);
-            $this->session->set_flashdata('message', 'The study program has been updated');
-            redirect('prodi/index');
+            $prodi = $this->input->post('prodi');
+            if ($this->m_prodi->prodi_exists($prodi, $prodi_id)) {
+                $this->session->set_flashdata('error', 'This study program already exists');
+                redirect('Prodi/edit_prodi/' . $prodi_id);
+            } else {
+                $data = array(
+                    'prodi_id' => $prodi_id,
+                    'prodi' => $prodi,
+                );
+                $this->m_prodi->update_data($data);
+                $this->session->set_flashdata('message', 'The study program has been updated');
+                redirect('Prodi/index');
+            }
         }
     }
     public function delete_prodi($id){

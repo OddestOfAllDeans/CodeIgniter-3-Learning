@@ -29,4 +29,11 @@ class m_faculties extends CI_Model {
 			$this->db->where ('faculty_id', $data['faculty_id']);
 			$this->db->delete('faculties', $data);
 		}
+		public function faculty_exists($faculty_name, $exclude_id = null) {
+			$this->db->where('faculty_name', $faculty_name);
+			if ($exclude_id) {
+				$this->db->where('faculty_id !=', $exclude_id);
+			}
+			return $this->db->get('faculties')->num_rows() > 0;
+		}
 	}
